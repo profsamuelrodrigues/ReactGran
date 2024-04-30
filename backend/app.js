@@ -26,10 +26,7 @@ app.use(router)
 //Conexão com o banco de dados
 require("./config/db.js")
 
-//rota de teste
-router.get("/", (req, res)=>{
-    res.send("Bem vindo!")
-})
+
 
 app.listen(port, ()=>{
     console.log(`Servidor rodando na porta ${port}`)
