@@ -46,10 +46,38 @@ const register = async (req, res)=>{
 
     res.status(201).json({
          _id: newUser._id,
-         token: generateToken(newUser)
+         token: generateToken(newUser._id)
     })
+}
+
+ //loga o usuário no sistema
+ const  login = async(req, res)=>{
+     const {email, password} = req.body
+
+     const user = await User.findOne({email})
+
+     //verifica se o usuário existe
+     if (!user) {
+          res.status(404).json({errors:['Usuário não encontrado.']})
+          return
+     }
+
+     //verifica as senhas
+     if (!(await bcrypt.compare(password, user.password))) {
+          res.status(422).json({errors:['Senha inválida.']})
+          return
+     }
+
+     //retorna o usuário com o token
+     res.status(201).json({
+          _id: user._id,
+          //profieImage: user.profileImage,
+          token: generateToken(user._id)
+     })
 }
 
 module.exports = {
     register,
+    login,
+
 }
