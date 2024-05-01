@@ -76,8 +76,14 @@ const register = async (req, res)=>{
      })
 }
 
+// pega o usuário logado
+const getCurrentUser = (req, res)=>{
+     const user = req.user
+     res.status(200).json(user)
+}
+
 module.exports = {
     register,
     login,
-
+    getCurrentUser,
 }
