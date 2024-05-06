@@ -11,6 +11,8 @@ import {useSelector, useDispatch} from 'react-redux'
 //Redux
 import {register, reset} from "../../slices/authSlice"
 
+
+
 const Register = () => {
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
