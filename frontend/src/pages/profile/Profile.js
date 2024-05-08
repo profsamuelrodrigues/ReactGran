@@ -75,6 +75,7 @@ const Profile = () => {
   //excluir foto
   const handleDelete = (id)=>{
     dispatch(deletePhoto(id))
+   
     resetComponentMessage()
   }
 
@@ -126,7 +127,7 @@ const Profile = () => {
                     <BsFillEyeFill/>
                   </Link>
                   <BsPencilFill/>
-                  <BsXLg onClick={()=>{handleDelete(photo._id)}}/>
+                  <BsXLg onClick={()=> handleDelete(photo._id) }/>
                 </div>
               )
               :(

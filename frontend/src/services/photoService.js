@@ -37,6 +37,7 @@ const deletePhoto = async(id, token)=>{
     } catch (error) {
         console.log(error)
     }
+    
 }
 
 const photoService = {
