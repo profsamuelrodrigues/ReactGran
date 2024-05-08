@@ -19,6 +19,7 @@ app.use(cors({credentials:true, origin:"http://localhost:3000"}))
 //pasta de upload de imagens
 app.use("/uploads", express.static(path.join(__dirname, "/uploads")))
 
+
 //rotas
 const router = require("./routes/Router.js")
 app.use(router)
