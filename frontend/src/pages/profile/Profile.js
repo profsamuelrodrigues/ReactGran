@@ -14,7 +14,7 @@ import { useParams } from 'react-router-dom'
 
 //redux
 import { getUserDetails } from '../../slices/userSlice'
-import { publishPhoto, resetMessage, getUserPhotos } from '../../slices/photoSlice'
+import { publishPhoto, resetMessage, getUserPhotos, deletePhoto } from '../../slices/photoSlice'
 
 
 const Profile = () => {
@@ -48,6 +48,11 @@ const Profile = () => {
     setImage(image)
   }
 
+  function resetComponentMessage(){
+    setTimeout(() => {
+      dispatch(resetMessage())
+    }, 2000);
+  }
 
   const submitHandle = (e)=>{
     e.preventDefault()
@@ -64,9 +69,13 @@ const Profile = () => {
 
     setTitle("")
 
-    setTimeout(() => {
-      dispatch(resetMessage())
-    }, 2000);
+    resetComponentMessage()
+  }
+
+  //excluir foto
+  const handleDelete = (id)=>{
+    dispatch(deletePhoto(id))
+    resetComponentMessage()
   }
 
   if (loading) {
@@ -117,7 +126,7 @@ const Profile = () => {
                     <BsFillEyeFill/>
                   </Link>
                   <BsPencilFill/>
-                  <BsXLg/>
+                  <BsXLg onClick={()=>{handleDelete(photo._id)}}/>
                 </div>
               )
               :(
