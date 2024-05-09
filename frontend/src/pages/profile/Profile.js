@@ -112,7 +112,7 @@ const Profile = () => {
             </form>
           </div>
           {errorPhoto &&  <Message msg={errorPhoto} type="error"/>}
-          {!errorPhoto &&  <Message msg={messagePhoto} type="success"/>}
+          {messagePhoto &&  <Message msg={messagePhoto} type="success"/>}
         </>
       )}
       <div className="user-photos">
